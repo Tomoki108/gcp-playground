@@ -11,12 +11,14 @@ func main() {
 		Handler: nil,
 	}
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("hello world"))
-	})
+	http.HandleFunc("/", handlerHelloWorld)
 
 	err := server.ListenAndServe()
 	if err != nil {
 		fmt.Println(err)
 	}
+}
+
+func handlerHelloWorld(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("hello world"))
 }
